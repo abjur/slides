@@ -514,13 +514,15 @@ rf$varimp[[4]] + theme_minimal(14)
 
 # Obrigado!
 
-Apresentação: http://slides.github.com/abjur/fgv/
+Apresentação: https://abjur.github.com/slides/fgv/
 
 - fcorrea@abj.org.br
 - jtrecenti@abj.org.br
 - mnunes@abj.org.br
 
-Site da ABJ: abj.org.br
+Site da ABJ: https://abj.org.br
+
+Associe-se!
 
 ```{r up, eval=FALSE}
 fs::dir_create("../docs/fgv/")
