@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variabilidade de decisões no judiciário</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Associação Brasileira de Jurimetria" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Variabilidade de decisões no judiciário
+## Uma análise das câmaras do TJSP
+### Associação Brasileira de Jurimetria
+### Rio de Janeiro, 2018-09-25
+
+---
+
+
+
+
+
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+Taxa de unanimidade: 94.3%
+
+--
+
+- Insegurança jurídica?
+- Julgamento colegiado?
+
+---
+
+# Contexto
+
+
+- Segurança jurídica é difícil de medir e conceituar
+
+--
+
+- Premissas
+    - Alta variabilidade de decisões em casos semelhantes é um indicativo de insegurança
+    - Influência demasiada do magistrado na decisão é um indicativo de insegurança
+
+--
+
+- Estudar essas quantidades ajuda a identificar problemas e planejar soluções
+
+---
+
+# Questões norteadoras
+
+### 1. Como medir variabilidade de decisões?
+
+--
+
+### 2. A variabilidade é diferente nas áreas cível e criminal?
+
+--
+
+### 3. As características dos magistrados influenciam nas decisões?
+
+---
+class: inverse, middle
+
+# Metodologia
+
+---
+
+# Taxa de reforma
+
+Vamos utilizar taxas de reforma de decisões em segunda instância
+
+--
+
+### Cálculo
+
+`$$R = \frac{D_p}{D_c}$$`
+
+- `\(D_p\)`: Quantidade de decisões procedentes e parcialmente procedentes.
+- `\(D_c\)`: Quantidade de decisões em que o recurso foi conhecido.
+
+--
+
+### Viés de seleção
+
+- A reforma só ocorre se existir recurso
+- Importante olhar taxa de reforma com recorribilidade
+
+---
+
+# Estrutura TJSP
+
+### Câmaras criminais
+
+- 16 Câmaras ordinárias
+- Não há separação de competência
+    
+--
+
+### Câmaras de direito privado
+
+- 38 Câmaras ordinárias
+- 3 competências
+    - Família
+    - Contratos
+    - Imobiliário
+
+--
+
+### Relatores e magistrados
+
+- 100 desembargadores em Direito Criminal
+- 218 desembargadores em Direito Privado
+
+---
+
+# Recorte
+
+- Acórdãos proferidos em 2017 no TJSP
+- Apenas apelações cíveis e criminais
+- Retirados casos não conhecidos / anulados
+- Apenas câmara mais frequente de cada relator
+- Assuntos reagrupados a partir de análise da frequência de casos
+
+---
+
+# Estratégia de análise
+
+### Visualização
+
+- Comparação das taxas de reforma entre câmaras
+    - Por Área
+    - Por Tipo de partes
+- Comparação das taxas de unanimidade entre câmaras
+    - Por Área
+    - Por Tipo de partes
+- Análise descritiva unidimensional do perfil dos magistrados
+    - Por Área
+- Taxa de reforma de acordo com o perfil dos magistrados
+    - Por Área
+- Variabilidade das taxas de reforma entre câmaras
+    - Por Área
+    - Por Tipo de partes
+
+---
+
+# Estratégia de análise
+
+### Modelagem
+
+- Análise da variabilidade explicada por cada variável 
+    - modelo: regressão logística
+- Análise do poder preditivo e importância das variáveis
+    - modelo: florestas aleatórias.
+
+--
+
+- Análise da variância explicada por cada variável 
+
+--
+
+- Análise dos determinantes da reforma de decisão
+    - características do processo
+    - características do relator
+
+---
+class: inverse, middle
+
+# Dados
+
+---
+
+# Fontes
+
+- 245.470 acórdãos analisados, de um total de 273.288 acórdãos proferidos.
+- Base de dados de magistrados montada manualmente.
+
+---
+
+# Variáveis do tribunal
+
+- **Reforma**: Reformou ou não reformou
+- **Voto unânime**: Sim ou não
+- **Assunto**: reclassificado a partir de análise de frequência dos casos
+- **Área**: Família, Contratos, Imobiliário, Criminal
+- **Câmara**: 01-16 no criminal e 01-38 no Cível
+- **Tipo de partes**:
+    - Criminal: PF-nPF ou nPF-PF
+    - Privado: PF-nPF, PF-PF, nPF-PF, nPF-nPF
+
+---
+
+# Variáveis dos relatores
+
+- **Nome**: Nome ajustado.
+- **Cidade de origem**: capital ou fora da capital
+- **Faculdade**: FDSBC, FMU, Mackenzie, PUC-Campinas, PUC-SP, Unisantos, USP, Outras
+- **Pós graduação**: Sim/Não
+- **Idade**: 30-40, 40-50, 50-60, 60-70, 70-80
+- **Tempo de formação**: 10-20, 20-30, 30-40, 40-50
+- **Tempo de tribunal**: 10-20, 20-30, 30-40
+- **Origem**: Advocacia, Magistratura ou Ministério Público
+
+---
+class: inverse, middle
+
+# Resultados
+
+---
+
+# Câmaras - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Câmaras - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Câmaras - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Câmaras - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Unanimidade - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Unanimidade - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Unanimidade - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Unanimidade - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+
+---
+
+# Perfil dos magistrados - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Perfil decisório - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Assuntos - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Efeitos das variáveis do modelo logístico - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Efeitos das variáveis do modelo logístico - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Efeitos das variáveis do modelo logístico - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Efeitos das variáveis do modelo logístico - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Variabilidade total explicada - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Variabilidade total explicada - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Variabilidade total explicada - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Variabilidade total explicada - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Modelo preditivo - Criminal
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo preditivo - Cível 1
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo preditivo - Cível 2
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Modelo preditivo - Cível 3
+
+&lt;img src="20180925_fgv_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Conclusões
+
+- A variabilidade das decisões é maior na área Criminal
+- A variabilidade depende muito da composição das partes e do assunto
+- Exceto pela idade, as variáveis relacionadas ao perfil do relator são pouco relevantes
+
+---
+
+# Próximos passos
+
+- Análise mais aprofundada em alguns assuntos processuais
+- Considerar a composição da turma de julgamento na análise
+- Estudar tempo e taxa de unanimidade conjuntamente com reforma
+
+---
+
+# Obrigado!
+
+Apresentação: http://slides.github.com/abjur/fgv/
+
+- fcorrea@abj.org.br
+- jtrecenti@abj.org.br
+- mnunes@abj.org.br
+
+Site da ABJ: abj.org.br
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+});
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
