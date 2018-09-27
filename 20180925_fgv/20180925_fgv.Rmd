@@ -51,6 +51,7 @@ Taxa de unanimidade: 94.3%
 --
 
 - Premissas
+    - Previsibilidade da decisão é um indicativo de segurança
     - Alta variabilidade de decisões em casos semelhantes é um indicativo de insegurança
     - Influência demasiada do magistrado na decisão é um indicativo de insegurança
 
@@ -526,7 +527,7 @@ Associe-se!
 
 ```{r up, eval=FALSE}
 fs::dir_create("../docs/fgv/")
-file.copy("20180925_fgv.html", "../docs/fgv/index.html")
+file.copy("20180925_fgv.html", "../docs/fgv/index.html", overwrite = TRUE)
 fs::dir_copy("libs", "../docs/fgv/libs")
 fs::dir_copy("20180925_fgv_files", "../docs/fgv/20180925_fgv_files")
 ```
