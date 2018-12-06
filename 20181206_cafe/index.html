@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Boletim ABJ</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Associação Brasileira de Jurimetria" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Boletim ABJ
+### Associação Brasileira de Jurimetria
+### Rio de Janeiro, 2018-09-25
+
+---
+
+
+
+
+
+
+class: inverse, middle
+
+# Introdução
+
+---
+
+# O que queremos
+
+.large[
+- Democratizar a análise de dados do judiciário
+- Tornar públicos os dados que são apenas acessíveis
+- Gerar um espaço de debate baseado em dados
+]
+
+---
+
+# O que fizemos
+
+.large[
+- Download de 639.000 decisões de segunda instância no TJSP
+- Arrumação dos dados para análise
+- Banco de dados do perfil dos magistrados
+]
+
+---
+
+# Variáveis da base de dados do boletim
+
+.pull-left[
+
+### Informações básicas
+
+- n_processo
+- info_area
+- info_classe
+- info_assunto_full
+- info_camara_num
+- info_relator
+- info_comarca
+- info_valor
+
+### Partes
+
+- part_ativo
+- part_passivo
+- part_tipo_litigio
+
+]
+
+.pull-right[
+
+### Desfecho
+
+- time_clean
+- dec_date
+- dec_val
+- dec_unanime
+- aceitou
+- parcial
+- reforma
+- unanime
+]
+
+---
+
+# Restrições
+
+.large[
+- Direito público ainda não foi considerado
+- Apenas algumas classes processuais
+]
+
+---
+
+# Futuro
+
+.large[
+- Direito público
+- Melhorar qualidade das classificações
+- Atualização mensal
+- Mais tribunais
+- Dados de CNPJ
+]
+
+---
+class: inverse, middle
+
+# Estudo sobre variabilidade de decisões
+
+---
+
+# Questões norteadoras
+
+### 1. Como medir variabilidade de decisões?
+
+--
+
+### 2. A variabilidade é diferente nas áreas cível e criminal?
+
+--
+
+### 3. As características dos magistrados influenciam nas decisões?
+
+---
+class: middle
+
+# Metodologia
+
+---
+
+# Taxa de reforma
+
+Vamos utilizar taxas de reforma de decisões em segunda instância
+
+--
+
+### Cálculo
+
+`$$R = \frac{D_p}{D_c}$$`
+
+- `\(D_p\)`: Quantidade de decisões procedentes e parcialmente procedentes.
+- `\(D_c\)`: Quantidade de decisões em que o recurso foi conhecido.
+
+--
+
+### Viés de seleção
+
+- A reforma só ocorre se existir recurso
+- Importante olhar taxa de reforma com recorribilidade
+
+---
+
+# Estrutura TJSP
+
+### Câmaras criminais
+
+- 16 Câmaras ordinárias
+- Não há separação de competência
+    
+--
+
+### Câmaras de direito privado
+
+- 38 Câmaras ordinárias
+- 3 competências
+
+--
+
+### Relatores e magistrados
+
+- 100 desembargadores em Direito Criminal
+- 218 desembargadores em Direito Privado
+
+---
+
+# Recorte
+
+- Acórdãos proferidos em 2017 no TJSP
+- Apenas apelações cíveis e criminais
+- Retirados casos não conhecidos / anulados
+- Apenas câmara mais frequente de cada relator
+- Assuntos reagrupados a partir de análise da frequência de casos
+
+---
+
+# Estratégia de análise
+
+### Visualização
+
+- Análise descritiva unidimensional do perfil dos magistrados
+    - Por Área
+- Taxa de reforma de acordo com o perfil dos magistrados
+    - Por Área
+- Variabilidade das taxas de reforma entre câmaras
+    - Por Área
+    - Por Tipo de partes
+
+---
+
+# Estratégia de análise
+
+### Modelagem
+
+- Análise do poder preditivo e importância das variáveis
+    - modelo: florestas aleatórias.
+
+--
+
+- Análise da variância explicada por cada variável 
+
+--
+
+- Análise dos determinantes da reforma de decisão
+    - características do processo
+    - características do relator
+
+---
+class: inverse, middle
+
+# Dados
+
+---
+
+# Fontes
+
+- 245.470 acórdãos analisados, de um total de 273.288 acórdãos proferidos.
+- Base de dados de magistrados montada manualmente.
+
+---
+
+# Variáveis do tribunal
+
+- **Reforma**: Reformou ou não reformou
+- **Voto unânime**: Sim ou não
+- **Assunto**: reclassificado a partir de análise de frequência dos casos
+- **Área**: Família, Contratos, Imobiliário, Criminal
+- **Câmara**: 01-16 no criminal e 01-38 no Cível
+- **Tipo de partes**:
+    - Criminal: PF-nPF ou nPF-PF
+    - Privado: PF-nPF, PF-PF, nPF-PF, nPF-nPF
+
+---
+
+# Variáveis dos relatores
+
+- **Nome**: Nome ajustado.
+- **Cidade de origem**: capital ou fora da capital
+- **Faculdade**: FDSBC, FMU, Mackenzie, PUC-Campinas, PUC-SP, Unisantos, USP, Outras
+- **Pós graduação**: Sim/Não
+- **Idade**: 30-40, 40-50, 50-60, 60-70, 70-80
+- **Tempo de formação**: 10-20, 20-30, 30-40, 40-50
+- **Tempo de tribunal**: 10-20, 20-30, 30-40
+- **Origem**: Advocacia, Magistratura ou Ministério Público
+
+---
+class: middle
+
+# Resultados
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Perfil dos magistrados - Criminal
+
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Privado 1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Privado 2
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil dos magistrados - Privado 3
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Perfil decisório - Criminal
+
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Privado 1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Privado 2
+
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Perfil decisório - Privado 3
+
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Assuntos - Criminal
+
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Privado 1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Privado 2
+
+&lt;img src="index_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Assuntos - Privado 3
+
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Modelo preditivo - Criminal
+
+&lt;img src="index_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo preditivo - Privado 1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Modelo preditivo - Privado 2
+
+&lt;img src="index_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Modelo preditivo - Privado 3
+
+&lt;img src="index_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+&lt;!-- ----------------------------------------------------------------------- --&gt;
+
+---
+
+# Conclusões
+
+- A variabilidade das decisões é maior na área Criminal
+- A variabilidade depende muito da composição das partes e do assunto
+- Exceto pela idade, as variáveis relacionadas ao perfil do relator são pouco relevantes
+
+---
+
+# Obrigado!
+
+Apresentação: https://abjur.github.com/slides/201812-cafe/
+
+- [fcorrea@abj.org.br](fcorrea@abj.org.br)
+- [jtrecenti@abj.org.br](jtrecenti@abj.org.br)
+
+Site da ABJ: https://abj.org.br
+
+Associe-se!
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
