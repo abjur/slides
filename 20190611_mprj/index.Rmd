@@ -95,7 +95,7 @@ class: center
 knitr::include_graphics("img/desap.png")
 ```
 
-http://bit.ly.com/abj-desap
+http://bit.ly/abj-desap
 
 ---
 class: center
