@@ -1,7 +1,7 @@
 library(tidyverse)
 library(formattable)
 
-d_emp <- readr::read_rds("~/Downloads/Telegram Desktop/d_parsed_emp.rds") %>% 
+d_emp <- readr::read_rds("d_parsed_emp.rds") %>% 
   filter(str_detect(distribuicao, "VARA EMPRESARIAL")) %>% 
   mutate(dt_dist = lubridate::dmy(str_sub(distribuicao, 1, 10)),
          valor_da_acao = valor_da_acao %>%
@@ -70,6 +70,10 @@ p_vol_ano <- function(dados = d_emp) {
             "Varas empresariais da Comarca de São Paulo")
 }
 
+dinheiro <- function(v){
+  formattable::currency(v, symbol = "R$", big.mark = ".", decimal.mark = ",")
+}
+
 montar_tabela <- function(v = classe, dados = d_emp, n = 10) {
   dados %>% 
     mutate({{v}} := fct_infreq({{v}}) %>% 
@@ -78,11 +82,12 @@ montar_tabela <- function(v = classe, dados = d_emp, n = 10) {
     group_by({{v}}) %>% 
     summarise(valor = median(valor_da_acao, na.rm = TRUE), n = n()) %>% 
     mutate(prop = percent(n / sum(n))) %>% 
+    set_names(str_to_title) %>% 
+    mutate(Valor = dinheiro(Valor)) %>% 
     formattable(list(
-      area(col = prop) ~ normalize_bar("pink", 0.2),
-      area(col = n) ~ normalize_bar("gold", 0.2),
-      area(col = valor) ~ normalize_bar("lightgreen", 0.2)
-    ))
+      area(col = Prop) ~ normalize_bar("pink", 0.2),
+      area(col = N) ~ normalize_bar("gold", 0.2),
+      area(col = Valor) ~ normalize_bar("lightgreen", 0.2))) 
 }
 
 # tb_classes <- montar_tabela(classe)
@@ -134,7 +139,7 @@ d_modelo <- d_emp %>%
 d_modelo %>% 
   count(teve_gratuidade, nao_gratuidade) %>% 
   filter(teve_gratuidade) %>% 
-  mutate(prop = n/sum())
+  mutate(prop = n/sum(n))
 
 # d_modelo %>% 
 #   filter(!morreu_sent, lubridate::year(dt_dist) == 2018) %>% 

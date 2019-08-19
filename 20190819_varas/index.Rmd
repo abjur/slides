@@ -1,11 +1,14 @@
 ---
 title: "Varas Empresariais: Uma iniciativa de sucesso"
-author: "Marcelo Guedes Nunes"
+author:
+- "Marcelo Guedes Nunes"
+- "Eduardo Peregrineli"
 institute: "Associação Brasileira de Jurimetria"
 date: "2019/06/11"
 output:
   xaringan::moon_reader:
     lib_dir: libs
+    css: ["default", "default-fonts", "bg.css"]
     nature:
       highlightStyle: github
       highlightLines: true
@@ -21,15 +24,66 @@ source("analises.R")
 
 # Introdução
 
+1. Jurimetria para formulação de política pública: instalação
+das varas
 
-
+2. Jurimetria do primeiro ano das varas: análise dos casos
+de 2018
 
 ---
 
-# Volume de distribuições
+# Questões Jurimétricas
 
-```{r}
 
+- Na Comarca de São Paulo, quantos processos empresariais são distribuídos por ano?
+    - Pergunta difícil: os registros são imprecisos.
+    - A classiﬁcação proposta pelo CNJ não é bem utilizada.
+    
+- Qual é o volume de trabalho esperado para os juízes das varas especializados?
+
+- Usando apenas as classiﬁcações corretas do tribunal (2014 a 2016):
+    - No Foro Central Cível foram distribuídos 675 processos empresariais por ano.
+    - Nos demais Foros foram distribuídos 450 processos por ano.
+    - Total: 1125 processos/ano.
+
+---
+
+# Estimativas iniciais
+
+- 1125 processos por ano justifica a criação das varas?
+    - Kesan and Ball (2010), Palumbo et al. (2013) e Wang (2007) sugerem que a especialização em casos complexos como os empresariais traz ganhos de celeridade e qualidade das decisões.
+    
+- Considerando os ganhos, o critério numérico deve impossibilitar a criação das varas?
+
+- 1125 é muito ou pouco?
+- **Como comparar processos cíveis e empresariais?**
+
+---
+
+# Mensuração
+
+- Hipóteses:
+    - **Viscosidade processual**: Processos empresariais levam mais tempo para serem julgados
+    - **Cifra oculta**: Existe uma massa de processos empresariais que são classificados incorretamente
+
+- Estimação da cifra oculta: aproximadamente 1% dos processos cíveis na verdade são empresariais
+    - Nova estimativa: no Foro Central Cível foram distribuídos 961 processos empresariais/ano, nos demais foros são 641 processos empresariais/ano
+    - Total: 1602 processos/ano.
+
+---
+
+# Mensuração
+
+- Um processo empresarial custa mais tempo dos magistrados do que processos cíveis?
+
+- **Viscosidade** = Tempo entre conclusos e decisões (lato sensu: sentenças, despachos etc)
+
+---
+
+# Resultados
+
+```{r, out.width="70%"}
+knitr::include_graphics("https://abj.org.br/wp-content/uploads/2018/01/Rplot02.bmp")
 ```
 
 ---
@@ -37,7 +91,9 @@ source("analises.R")
 # Volume de distribuições
 
 ```{r, out.width="100%", fig.width=8, fig.height=5, dpi = 300}
-p_vol()
+p_vol() +
+  ggtitle("Distribuições mensais", "Varas empresariais da Comarca de São Paulo") +
+  labs(x = "Mês", y = "Quantidade de processos")
 ```
 
 ---
@@ -60,11 +116,20 @@ montar_tabela(assunto)
 
 # Tempo dos processos
 
+- Em apenas 19,4% dos casos já foi preferida sentença
 
+- Ainda não é possível estimar com certeza o tempo mediano dos casos
 
 ---
 
 # Comentários
+
+- Durante 2017 houve um grande crescimento no volume de causas, que continuou em 2019, com menor intensidade, podendo até ter se estabilizado
+
+- A vara atrai casos relativamente caros. Alguns de seus casos tipicamente tratam de valores acima de R$ 100.000,00
+    - Mesmo assim, são feitos pedidos de gratuidade judiciária em 20% dos casos
+    
+- Novos estudos fornecerão estimativas de duração dos processos
 
 ---
 

@@ -1,0 +1,6 @@
+.inverse, .hljs-github {
+  background-image: url(logo.jpg); /* Change this to the url of the image you want as your background */
+    background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 10%;
+}
