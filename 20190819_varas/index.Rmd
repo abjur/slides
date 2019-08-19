@@ -1,0 +1,83 @@
+---
+title: "Varas Empresariais: Uma iniciativa de sucesso"
+author: "Marcelo Guedes Nunes"
+institute: "Associação Brasileira de Jurimetria"
+date: "2019/06/11"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("analises.R")
+```
+
+---
+
+# Introdução
+
+
+
+
+---
+
+# Volume de distribuições
+
+```{r}
+
+```
+
+---
+
+# Volume de distribuições
+
+```{r, out.width="100%", fig.width=8, fig.height=5, dpi = 300}
+p_vol()
+```
+
+---
+
+# Classes dos processos
+
+```{r}
+montar_tabela(classe)
+```
+
+---
+
+# Assuntos dos processos
+
+```{r}
+montar_tabela(assunto)
+```
+
+---
+
+# Tempo dos processos
+
+
+
+---
+
+# Comentários
+
+---
+
+# Obrigado!
+
+### Email
+
+[mnunes@abj.org.br](mailto:mnunes@abj.org.br)
+
+### Site
+
+https://abj.org.br
+
+### Apresentação 
+
+https://abjur.github.io/slides/varemp
