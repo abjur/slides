@@ -6,11 +6,11 @@ institute: "Associação Brasileira de Jurimetria | Terranova Consultoria"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [mycss.css, default, metropolis, metropolis-fonts, ninjutsu]
+    css: [default, metropolis, metropolis-fonts, ninjutsu]
     nature:
       highlightStyle: github
       highlightLines: true
-      countIncrementalSlides: false
+      countIncrementalSlides: true
 editor_options: 
   chunk_output_type: inline
 ---
@@ -19,6 +19,7 @@ editor_options:
 knitr::opts_chunk$set(echo=FALSE, 
                       message=FALSE, 
                       warning=FALSE,
+                      fig.align = "center",
                       out.width="100%")
 ```
 
@@ -75,8 +76,8 @@ knitr::include_graphics("img/jurimetria2.png")
 
 # Em resumo
 
-```{r}
-knitr::include_graphics("img/diagrama-programacao.png")
+```{r, out.width="90%"}
+knitr::include_graphics("img/diagrama-programacao2.png")
 ```
 
 ---
@@ -94,7 +95,7 @@ class: inverse, middle, center
 
 # Exemplo 1: Média
 
-```{r}
+```{r, out.width="80%"}
 knitr::include_graphics("img/camaras.png")
 ```
 
